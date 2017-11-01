@@ -1,4 +1,6 @@
-# MachineLearning
+# The Fit Machine Learning Blog
+*model.fit(Machine_Learning, epochs=Inf)* 
+
 A collection of python Machine Learning articles and examples. Here, you will find code related to MDP, Bellman, OpenAI solutions and others...
 
 *Michel is an AI researcher and a graduate from University of Montreal*
