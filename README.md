@@ -15,7 +15,7 @@ Once our model can anticipate future states correctly, even for events it has ne
 (utility/reward at state 1 = reward + sum of discounted expected reward). The twist here is that we recursively calculate expected reward using the LSTM models which 
 is now adept at anticipating future states and rewards given a series of state-actions.
 
-```
+```python
     #predict what the next state is going to be like given the current state and a given action pass as a parameter
     pred = model.predict(predX[0].reshape(1,1,predX.shape[1]))
     reward = pred[0][0][4]
@@ -31,19 +31,21 @@ is now adept at anticipating future states and rewards given a series of state-a
 ```
 
 With the above in place (expected reward for a given action, we can now easily determine which action to take at any given state.
-```
-        #chose an action by estimating consequences of actions for the next num_anticipation_steps steps ahead
-        #works best with looking 6 steps ahead
-        #Also works best if you train the model more itterations 
-        estimated_anticipated_reward_a = estimateReward(qs,1,num_anticipation_steps)
-        estimated_anticipated_reward_b = estimateReward(qs,0,num_anticipation_steps)
-        print(" estimated rewards a and b", estimated_anticipated_reward_a, estimated_anticipated_reward_b)
 
-        #chose argmax action of estimated anticipated rewards
-        if estimated_anticipated_reward_a > estimated_anticipated_reward_b:
-            a = 1
-        else:
-            a = 0
+```python
+    #chose an action by estimating consequences of actions for the next num_anticipation_steps steps ahead
+    #works best with looking 6 steps ahead
+    #Also works best if you train the model more itterations
+    
+    estimated_anticipated_reward_a = estimateReward(qs,1,num_anticipation_steps)
+    estimated_anticipated_reward_b = estimateReward(qs,0,num_anticipation_steps)
+    print(" estimated rewards a and b", estimated_anticipated_reward_a, estimated_anticipated_reward_b)
+
+    #chose argmax action of estimated anticipated rewards
+    if estimated_anticipated_reward_a > estimated_anticipated_reward_b:
+        a = 1
+    else:
+        a = 0
 ```
 
 this has proven remarkably successfull as the model is able to balance the pole indefinately.
@@ -60,7 +62,7 @@ We make use of the following:
 You will need a working version of python. Preferably 3.6 or above with the following libraries. 
 `Pip install <library name>` should get you going.
 
-```
+```python
 import numpy as np
 import keras
 import gym
