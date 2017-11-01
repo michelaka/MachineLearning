@@ -1,23 +1,26 @@
 # MachineLearning
-A collection of python Machine Learning articles and examples. You will find code related to MDP, Bellman, OpenAI solutions and others
+A collection of python Machine Learning articles and examples. Here, you will find code related to MDP, Bellman, OpenAI solutions and others...
 
 *Michel is an AI researcher and a graduate from University of Montreal*
 
 ## Solving Cartpole the right way
 
-Our solution of the Open AI Cartpole combines many different aspects of Machine Learning to solve the problem in the most modular, 
-yet efficient way possible.
+Our solution of the Open AI Cartpole combines many different aspects of Machine Learning to solve the problem in the most modular, yet efficient way possible.
 
 Our solution learns by observing the first 100 games, then trains a sequential model made of 2 stateful LSTMs, one relu and a regular dense model for output.
 Once the model is trained, we do not store any discrete information about the environment. 
-We first teach the model to anticipate the next state of the environment give any plausible action. In essence, the LSTMs learn that
-given a series of event (states + actions) this next state and reward are most probable.
+However, we first teach the model to anticipate the next state of the environment given any plausible action. In essence, the LSTMs learn that given a series of event (states + actions) this next state and reward are most probable. This is most useful because it avoids data explosion of traditional discrete MDP solutions, it is also computationally efficient.
 
-Once our model can anticipate future states correctly, even for event it has never encountered, we used it in an MDP, solved using a Bellman approach 
+Once our model can anticipate future states correctly, even for events it has never encountered, we used it in an MDP, solved using a Bellman approach 
 (utility/reward at state 1 = reward + sum of discounted expected reward). The twist here is that we recursively calculate expected reward using the LSTM models which 
-is now adept at anticipating future states and rewards.
+is now adept at anticipating future states and rewards given a series of state-actions.
 
 ```
+    #predict what the next state is going to be like given the current state and a given action pass as a parameter
+    pred = model.predict(predX[0].reshape(1,1,predX.shape[1]))
+    reward = pred[0][0][4]
+    expected_state = pred[0][0][:-1]
+    
     # Bellman -- reward at this state = reward + Sum of discounted expected rewards for all actions (recursively)
     #recursively calculate the reward at future states for all possible actions
     discounted_future_rewards = 0.95*estimateReward(expected_state,0,depth-1)+ 0.95*estimateReward(expected_state,1,depth-1)
