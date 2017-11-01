@@ -54,7 +54,8 @@ We make use of the following:
 * Environment observation
 
 ### what you will need to run our Cartpole
-You will need a working version of python. Preferably 3.6 or above with the following libraries
+You will need a working version of python. Preferably 3.6 or above with the following libraries. 
+`Pip install <library name>` should get you going.
 
 ```
 import numpy as np
@@ -64,3 +65,9 @@ import os
 import h5py
 ```
 
+Make sure you also set `observe_and_train` to True the first time you run the model. After the first run, the model will save the weights for future use so you can set it back to False. You will find this variable along with other variables you can tweak right after the header/import section of the file.
+
+### possible improvements
+Many... So many...
+
+### Please comment and provide feedback.
