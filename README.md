@@ -30,11 +30,11 @@ is now adept at anticipating future states and rewards given a series of state-a
     return reward + discounted_future_rewards
 ```
 
-With the above we can then determine which action to take at any given state.
+With the above in place (expected reward for a given action, we can now easily determine which action to take at any given state.
 ```
-        #chose an action by estimating consequences of actions 5 steps ahead
+        #chose an action by estimating consequences of actions for the next num_anticipation_steps steps ahead
         #works best with looking 6 steps ahead
-        #Also works best if you train the model more itterations
+        #Also works best if you train the model more itterations 
         estimated_anticipated_reward_a = estimateReward(qs,1,num_anticipation_steps)
         estimated_anticipated_reward_b = estimateReward(qs,0,num_anticipation_steps)
         print(" estimated rewards a and b", estimated_anticipated_reward_a, estimated_anticipated_reward_b)
