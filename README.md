@@ -5,7 +5,14 @@ A collection of python Machine Learning articles and examples. Here, you will fi
 
 ## Solving Cartpole the right way
 
+
 ![Cartpole screenshot](/img/screeshot2.jpg?raw=true "Cartpole")
+
+
+### Our results
+After observing the environment for 100 episode our agent is able to balence the pole for all subsequent games indefinitely.
+
+### Our approach
 
 Our solution of the Open AI Cartpole combines many different aspects of Machine Learning to solve the problem in the most modular, yet efficient way possible.
 
