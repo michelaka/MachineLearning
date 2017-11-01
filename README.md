@@ -59,7 +59,7 @@ With the above in place (expected utility/future rewards for a given action), we
         a = 0
 ```
 
-this has proven remarkably successfull as the model is able to balance the pole indefinately.
+This has proven remarkably successfull as the model is able to balance the pole indefinately.
 
 We make use of the following:
 * Markov Decision Process
