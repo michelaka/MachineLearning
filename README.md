@@ -23,7 +23,7 @@ Once the model is trained, we do not store any discrete information about the en
 However, we first teach the model to anticipate the next state of the environment given any plausible action. In essence, the LSTMs learn that given a series of event (states + actions) this next state and reward are most probable. This is most useful because it avoids data explosion of traditional discrete MDP solutions, it is also computationally efficient.
 
 Once our model can anticipate future states correctly, even for events it has never encountered, we used it in an MDP, solved using a Bellman approach 
-(utility/reward at state 1 = reward + sum of discounted expected reward). The twist here is that we recursively calculate expected reward using the LSTM models which 
+(utility/reward at state 1 = reward + sum of discounted expected rewards of future steps given all possible actions). The twist here is that we recursively calculate expected reward using the LSTM models which 
 is now adept at anticipating future states and rewards given a series of state-actions.
 
 ```python
