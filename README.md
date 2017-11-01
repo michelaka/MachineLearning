@@ -41,7 +41,7 @@ is now adept at anticipating future states and rewards given a series of state-a
     return reward + discounted_future_rewards
 ```
 
-With the above in place (expected reward for a given action, we can now easily determine which action to take at any given state.
+With the above in place (expected utility/future rewards for a given action), we can now easily determine which action to take at any given state.
 
 ```python
     #chose an action by estimating consequences of actions for the next num_anticipation_steps steps ahead
