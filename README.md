@@ -5,6 +5,8 @@ A collection of python Machine Learning articles and examples. Here, you will fi
 
 ## Solving Cartpole the right way
 
+![Cartpole screenshot](/img/screeshot2.jpg?raw=true "Cartpole")
+
 Our solution of the Open AI Cartpole combines many different aspects of Machine Learning to solve the problem in the most modular, yet efficient way possible.
 
 Our solution learns by observing the first 100 games, then trains a sequential model made of 2 stateful LSTMs, one relu and a regular dense model for output.
