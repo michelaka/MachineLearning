@@ -16,7 +16,7 @@ num_env_actions = 1
 num_training_exmaples = 100
 timesteps = 1
 num_initial_observation = 4000
-training_epochs = 300
+training_epochs = 800
 
 #set between 5 and 7 for best results
 num_anticipation_steps = 6
